@@ -22,6 +22,8 @@
 #include "devices.h"
 #include "board-m7wl.h"
 
+uint32_t max_gpu = 1;
+
 #ifdef CONFIG_MSM_DCVS
 static struct msm_dcvs_freq_entry grp3d_freq[] = {
        {0, 0, 333932},

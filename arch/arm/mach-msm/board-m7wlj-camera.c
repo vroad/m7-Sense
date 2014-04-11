@@ -1805,6 +1805,7 @@ static struct msm_camera_sensor_platform_info sensor_vd6869_board_info = {
 	.vcm_pwd	= CAM_PIN_GPIO_CAM_VCM_PD,
 	.vcm_enable	= 1,
 	.csi_lane_params = &vd6869_csi_lane_params,
+	.ews_enable = false,
 };
 
 static struct camera_led_est msm_camera_sensor_vd6869_led_table[] = {
@@ -1935,7 +1936,7 @@ static struct msm_camera_sensor_flash_data flash_vd6869 = {
 
 };
 
-#if defined(CONFIG_RUMBAS_ACT) || defined(CONFIG_TI201_ACT)
+#if defined(CONFIG_RUMBAS_ACT) || defined(CONFIG_TI201_ACT) || defined(CONFIG_LC898212_ACT)
 static struct msm_actuator_info *vd6869_actuator_table[] = {
 #if defined(CONFIG_RUMBAS_ACT)
     &rumbas_actuator_info,
@@ -3530,6 +3531,7 @@ void __init m7wlj_init_cam(void)
 	pr_info("main_camera id = %d , front_camera_id=%d\n", main_camera_id, front_camera_id);
 
 	pr_info("engineerid=%d\n",engineerid);
+	pr_info("system_rev=%d\n",system_rev);
 #ifdef CONFIG_I2C
 	if (system_rev == 0) {
 		
@@ -3565,7 +3567,7 @@ void __init m7wlj_init_cam(void)
 					ARRAY_SIZE(m7wlj_camera_i2c_boardinfo_imx135_ov2722));
 			}
 
-			update_yushanII_flag(HTC_CAMERA_IMAGE_NONE_BOARD);
+			update_yushanII_flag(HTC_CAMERA_IMAGE_YUSHANII_BOARD);
 		}
 	}
 #endif
